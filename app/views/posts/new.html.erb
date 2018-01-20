@@ -1,0 +1,25 @@
+
+
+<center>
+
+<% if flash[:errors] %>
+<p> <% flash[:errors].each do |err| %></p>
+<div class="row">
+<p class="text-danger"> <%= err %> </p>
+<% end %>
+<% end %>
+
+
+
+<%= form_for @post do |f| %>
+<%= f.label :Filename %>
+<%= f.text_field :name %>
+<br> 
+<br>
+<%= f.label :file %>
+<%= f.file_field :attachment %>
+<br>
+<br>
+<%= f.submit "Save" %>
+<% end %>
+</center>

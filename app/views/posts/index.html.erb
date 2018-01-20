@@ -1,0 +1,52 @@
+<center>
+<div class="container">
+<% if !flash[:notice].blank? %>
+<div>
+	<%= flash[:notice] %>
+</div>
+<% end %>	
+</div>
+
+
+
+
+<table border="1">
+	<thead>
+		<tr>
+		    
+			<th>candidate Email</th>
+			<th>Download link</th>
+			<th>Posted_at</th>
+			<% if user_signed_in? %>
+			<th>Action</th>
+			<% end %>
+			
+		</tr>
+	</thead>
+			<tbody>
+			<% @post.each do |p| %>
+			<tr>
+			
+			<td><%= p.user.email %></td>
+			<td><%= link_to 'Download', p.attachment_url %></td>
+			<td><%= time_ago_in_words(p.created_at) %> ago</td>
+			<% if user_signed_in? %>
+			<td><%=  link_to 'Delete', p, method: :delete, confirm: "Are you sure to delete #{p.name}?" %></td>
+			<% end %>
+			</tr>
+			</tbody>
+			<% end %>
+		</tbody>
+		
+
+		<br>
+		
+	</table>
+	</nav>
+	<h4><%= link_to "New Post",new_post_path %> </h4> 
+	<br>
+	<br>
+	<% if user_signed_in? %>
+	<h4><%= link_to "Log out",new_user_session_path %> </h4>
+	<% end %>
+	</center>
