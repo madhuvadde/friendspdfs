@@ -17,6 +17,7 @@ end
   def create
   	@post = current_user.posts.build(post_params)
   	if @post.save
+      PostMailer.post_created(current_user).deliver
   		redirect_to  posts_path,notice: "Successfully Uploaded"
   	else
   		render "new"

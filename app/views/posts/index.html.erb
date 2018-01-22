@@ -12,11 +12,11 @@
 	<thead>
 		<tr class="success">
 		    
-			<th>candidate Email</th>
+			<th>candidate Name</th>
 			<th>File Name</th>
 			<th>Download link</th>
 			<th>Posted_at</th>
-			<% if user_signed_in? %>
+			<% if current_user %>
 			<th>Action</th>
 			<% end %>
 			
@@ -25,11 +25,11 @@
 			<tbody>
 			<% @post.each do |p| %>
 			<tr class="danger" >
-			<td><%= p.user.email %></td>
+			<td><%= p.user.name %></td>
 			<td><%= p.name %></td>
 			<td><%= link_to 'Download', p.attachment_url %></td>
 			<td><%= time_ago_in_words(p.created_at) %> ago</td>
-			<% if user_signed_in? %>
+			<% if p.user == current_user %>
 			<td><%=  link_to 'Delete', p, method: :delete, confirm: "Are you sure to delete #{p.name}?" %></td>
 			<% end %>
 			</tr>
