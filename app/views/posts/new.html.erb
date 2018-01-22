@@ -5,18 +5,18 @@
 <% if flash[:errors] %>
 <p> <% flash[:errors].each do |err| %></p>
 <div class="row">
-<p class="text-danger"> <%= err %> </p>
+<p class="success"> <%= err %> </p>
 <% end %>
 <% end %>
 
 
 
 <%= form_for @post do |f| %>
-<%= f.label :Filename %>
+<%= f.label :Filename %><br>
 <%= f.text_field :name %>
 <br> 
 <br>
-<%= f.label :file %>
+<%= f.label :file %><br>
 <%= f.file_field :attachment %>
 <br>
 <br>

@@ -10,9 +10,10 @@
 <nav class="navbar navbar-default">
 <table class= "table">
 	<thead>
-		<tr>
+		<tr class="success">
 		    
 			<th>candidate Email</th>
+			<th>File Name</th>
 			<th>Download link</th>
 			<th>Posted_at</th>
 			<% if user_signed_in? %>
@@ -23,8 +24,9 @@
 	</thead>
 			<tbody>
 			<% @post.each do |p| %>
-			<tr>
+			<tr class="danger" >
 			<td><%= p.user.email %></td>
+			<td><%= p.name %></td>
 			<td><%= link_to 'Download', p.attachment_url %></td>
 			<td><%= time_ago_in_words(p.created_at) %> ago</td>
 			<% if user_signed_in? %>
