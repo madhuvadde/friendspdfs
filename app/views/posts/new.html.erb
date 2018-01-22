@@ -1,6 +1,6 @@
  <% provide(:title ,"New Post") %>
 
-<center>
+
 
 <% if flash[:errors] %>
 <p> <% flash[:errors].each do |err| %></p>
@@ -11,20 +11,19 @@
 
 
 
+
 <%= form_for @post do |f| %>
-<%= f.label :Filename %><br>
-<%= f.text_field :name %>
-<br> 
+<div class="col-sm-12">
+<%= f.text_field :name,class: "form-control", placeholder: "File Name" %>
+</div>
+
+<div class="col-sm-12">
 <br>
-<%= f.label :file %><br>
 <%= f.file_field :attachment %>
 <br>
-<br>
-<%= f.submit "Save" %>
+</div>
+
+<div class="col-sm-12">
+<%= f.submit "Save", class: "btn btn-primary btn-block" %></div>
 <% end %>
-<br>
-<br>
-<% if user_signed_in? %>
-<h4><%= link_to "Posts",posts_path %></h4>
-<% end %>
-</center>
+
